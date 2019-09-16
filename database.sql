@@ -8,3 +8,35 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "cigars" (
+
+  "id" SERIAL PRIMARY KEY,
+
+  "brand" VARCHAR(120) NOT NULL,
+
+  "cigar_name" VARCHAR(120) NOT NULL,
+
+  "size_type"  VARCHAR(120) NOT NULL,
+
+  "ring_gauge" INT,
+  
+  "filler" 		VARCHAR(120) NOT NULL,
+  
+  "binder"    	VARCHAR(120) NOT NULL,
+	
+  "wrapper"		VARCHAR(120) NOT NULL
+
+
+);
+
+CREATE TABLE "country" (
+  "id" SERIAL PRIMARY KEY,
+  "name" VARCHAR(120) NOT NULL
+);
+
+CREATE TABLE "strength" (
+"id" SERIAL PRIMARY KEY,
+  "name" VARCHAR(120) NOT NULL
+);
+
