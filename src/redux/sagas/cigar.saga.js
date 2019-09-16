@@ -18,7 +18,7 @@ function* getCigarInfo(action) {
 }
 
 function* cigarSaga() {
-    yield takeLatest('FETCH_CIGAR_INFO', getCigarInfo);
+    yield takeLatest('GET_CIGAR_INFO', getCigarInfo);
   }
 
   export default cigarSaga;
