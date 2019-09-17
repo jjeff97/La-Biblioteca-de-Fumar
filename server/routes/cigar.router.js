@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    const queryText = 'SELECT id, name FROM cigar';
+    const queryText = 'SELECT id, name FROM cigars';
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
@@ -20,10 +20,12 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
     const newCigar = req.body;
-    const queryText = `INSERT INTO cigars "brand", "cigar_name", "size_type", "ring_gauge", "filler", "binder", "wrapper" )
+    const queryText = `INSERT INTO cigars "brand", "cigar_name", "country", "strength", "size_type", "ring_gauge", "filler", "binder", "wrapper" )
 VALUES ($1, $2, $3, $4, $5, $6, $7)`;
     const queryValues = [
         newCigar.brand,
+        newCigar.country,
+        newCigar.strength,
         newCigar.cigar_name,
         newCigar.size_type,
         newCigar.ring_gauge,

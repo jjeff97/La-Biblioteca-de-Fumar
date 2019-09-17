@@ -13,30 +13,30 @@ CREATE TABLE "cigars" (
 
   "id" SERIAL PRIMARY KEY,
 
-  "brand" VARCHAR(120) NOT NULL,
+  "brand" VARCHAR(100) NOT NULL,
 
   "cigar_name" VARCHAR(120) NOT NULL,
+	
+  "country" 	VARCHAR(50) NOT NULL,
+  
+  "strength"		VARCHAR(50) NOT NULL,
 
-  "size_type"  VARCHAR(120) NOT NULL,
+  "size_type"  VARCHAR(50) NOT NULL,
 
   "ring_gauge" INT,
   
-  "filler" 		VARCHAR(120) NOT NULL,
+  "filler" 		VARCHAR(50) NOT NULL,
   
-  "binder"    	VARCHAR(120) NOT NULL,
+  "binder"    	VARCHAR(50) NOT NULL,
 	
-  "wrapper"		VARCHAR(120) NOT NULL
+  "wrapper"		VARCHAR(50) NOT NULL
 
 
 );
 
-CREATE TABLE "country" (
-  "id" SERIAL PRIMARY KEY,
-  "name" VARCHAR(120) NOT NULL
-);
-
-CREATE TABLE "strength" (
-"id" SERIAL PRIMARY KEY,
-  "name" VARCHAR(120) NOT NULL
-);
-
+ INSERT INTO "cigars" ("brand", "cigar_name", "country", "strength", "size_type", "ring_gauge", "filler", "binder", "wrapper")
+VALUES('Rocky Patel', 'Vintage 1990', 'Hondurus', 'Medium to Full', 'Perferto', 48, 'Dominican', 'Nicaraguan', 'Connecticut Broadleaf'),
+('MonteCristo', 'No.2', 'Dominican Republic', 'medium', 'Torpedo', 50, 'Dominican Republic', 'Dominican Republic','Connecticut' ),
+('Arturo Fuente', 'Fuente Fuente Opus X', 'Dominican Republic', 'full', 'Figurado', 49, 'Dominican Republic','Dominican Republic', 'Dominican Republic'),
+('Cohiba', 'Behike 56', 'Cuba', 'full', 'Double Robusto', 56, 'Cuban', 'Cuban', 'Cuban'),
+('Oscar Valladares', 'Super Fly', "Honduras", 'full', 'Super Toro', 54, 'Nicaraguan', 'Honduran', 'San Andres');
