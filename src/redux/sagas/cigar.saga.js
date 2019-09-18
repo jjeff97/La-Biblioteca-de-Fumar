@@ -5,10 +5,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* getCigarInfo(action) {
     try {
-        const response = yield axios.get('api/cigar');
+        const response = yield axios.get('/api/cigar');
         yield put({
             type: 'SET_CIGAR_INFO',
-            payload: response.data.action,
+            payload: response.data,
         });
 
     }catch(err) {
@@ -17,8 +17,9 @@ function* getCigarInfo(action) {
 
 }
 
-function* cigarSaga() {
+function* cigarSaga(action) {
     yield takeLatest('GET_CIGAR_INFO', getCigarInfo);
-  }
+}
+
 
   export default cigarSaga;

@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    const queryText = 'SELECT id, name FROM cigars';
+    const queryText = 'SELECT * FROM cigars';
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {

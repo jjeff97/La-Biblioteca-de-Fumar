@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
-const InfoPage = () => (
-  <div>
-    <p>
-      Info Page
-    </p>
-  </div>
-);
+class InfoPage extends Component {
 
-export default InfoPage;
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_CIGAR_INFO' });
+  }
+
+  render() {
+    const cigarArray = this.props.store.cigarReducer.map((cigar, index) => {
+      return (
+        <div key={index} >
+          <table class ="table">
+          <thead>
+          <tr> 
+          <th>{cigar.brand}</th>
+          <th>{cigar.cigar_name}</th>
+          <th>{cigar.country}</th>
+          <th>{cigar.strength}</th>
+          <th>{cigar.size_type}</th>
+          <th>{cigar.ring_gauge}</th>
+          <th>{cigar.filler}</th>
+          <th>{cigar.binder}</th>
+          <th>{cigar.wrapper}</th>
+          </tr>
+          </thead>
+          </table>
+          </div>
+              )
+    })
+
+    return (
+      <div>
+        <h1>Cigar Library</h1>
+        {cigarArray}
+      </div >
+    );
+  }
+}
+
+
+
+export default connect(mapStoreToProps)(withRouter(InfoPage));
