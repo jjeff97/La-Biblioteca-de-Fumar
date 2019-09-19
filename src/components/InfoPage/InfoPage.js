@@ -9,8 +9,10 @@ class InfoPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'GET_CIGAR_INFO' });
   }
-
-  render() {
+onNewInput =(event) =>{
+  this.props.history.push('/input')
+} 
+ render() {
     const cigarArray = this.props.store.cigarReducer.map((cigar, index) => {
       return (
         <div key={index} >
@@ -37,6 +39,8 @@ class InfoPage extends Component {
       <div>
         <h1>Cigar Library</h1>
         {cigarArray}
+        <h2>Click to enter new cigars</h2>
+        <button onClick={this.onNewInput}>Next</button>
       </div >
     );
   }

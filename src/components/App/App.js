@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
+import InputPage from '../InputPage/InputPage';
 import './App.css';
 
 class App extends Component {
@@ -76,6 +76,12 @@ class App extends Component {
               path="/registration"
               authRedirect="/admin"
               component={RegisterPage}
+            />
+
+            <ProtectedRoute 
+              exact
+              path="/input"
+              component={InputPage}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

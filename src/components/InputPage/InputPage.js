@@ -1,6 +1,7 @@
-React, { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 
 class InputPage extends Component {
     state = {
@@ -30,7 +31,17 @@ class InputPage extends Component {
     
         })
     }
-    onNextCLick = (event) => {
-        
+    onNextClick = (event) => {
+this.props.dispatch({type: 'SET_CIGAR_INFO', payload: this.state.brand })
+    }
+    render() {
+        return(
+            <div>
+                <h1>Enter New Info Here</h1>
+                <input type="text" onChange={this.enterValue}/>
+                <button onClick={this.onNextClick}>Submit</button>
+            </div>
+        )
     }
 }
+export default connect(mapStoreToProps)(withRouter(InputPage));
