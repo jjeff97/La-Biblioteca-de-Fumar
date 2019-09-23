@@ -5,7 +5,14 @@ import { withRouter } from 'react-router-dom';
 
 
 class InfoPage extends Component {
-
+  state = {
+    count: 0,
+  }
+clickInventory = (event) => {
+  this.setState({
+    count: !this.state.hide,
+  });
+}
   componentDidMount() {
     this.props.dispatch({ type: 'GET_CIGAR_INFO' });
   }
@@ -20,9 +27,9 @@ onNewInput =(event) =>{
           <thead>
           <tr> 
           <th>{cigar.brand}</th>
-          <th>{cigar.cigar_name}</th>
           <th>{cigar.country}</th>
           <th>{cigar.strength}</th>
+          <th>{cigar.cigar_name}</th>
           <th>{cigar.size_type}</th>
           <th>{cigar.ring_gauge}</th>
           <th>{cigar.filler}</th>
@@ -31,6 +38,10 @@ onNewInput =(event) =>{
           </tr>
           </thead>
           </table>
+          Amount in humidor: {this.state.count} 
+          <button onClick={() => {this.setState({count: this.state.count +1})}}>Increase</button>
+          <button onClick ={() => {this.setState({count: this.state.count -1})}}>Decrease</button>
+          <button onClick={() => {this.setState({count: 0})}}>Reset</button>
           </div>
               )
     })
@@ -43,7 +54,7 @@ onNewInput =(event) =>{
         <button onClick={this.onNewInput}>Next</button>
       </div >
     );
-  }
+  };
 }
 
 

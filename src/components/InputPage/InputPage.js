@@ -13,7 +13,7 @@ class InputPage extends Component {
         filler: '',
         binder: '',
         wrapper: '',
-
+        
     };
 
     
