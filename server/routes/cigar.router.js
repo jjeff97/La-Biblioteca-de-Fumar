@@ -7,7 +7,6 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     const queryText = 'SELECT * FROM cigars';
-    const cigarId = req.params.id;
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
@@ -21,7 +20,7 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
     const newCigar = req.body;
-    const queryText = `INSERT INTO cigars "brand", "cigar_name", "country", "strength", "size_type", "ring_gauge", "filler", "binder", "wrapper" )
+    const queryText = `INSERT INTO cigars ("brand", "country", "strength", "cigar_name", "size_type", "ring_gauge", "filler", "binder", "wrapper" )
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
     const queryValues = [
         newCigar.brand,
@@ -34,7 +33,7 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
         newCigar.binder,
         newCigar.wrapper
     ];
-    pool.query(queryText, queryValues, [cigarId])
+    pool.query(queryText, queryValues )
         .then(() => { res.sendStatus(210); })
         .catch((err) => {
             console.log('Error completing SELECT cigar query', err);
@@ -49,7 +48,9 @@ router.put('/cigar/:id', (req, res) => {
     "wrapper" = $9
     WHERE "id" = $10;`;
 
-    pool.query(queryText, [newCigarData.brand, newCigarData.country, cigarId])
+    pool.query(queryText, [newCigarData.brand, newCigarData.country, newCigarData.strength,
+        newCigarData.cigar_name, newCigarData.size_type, newCigarData.ring_gauge,
+        newCigarData.filler, newCigarData.binder, newCigarData.wrapper])
         .then((response) => {
             res.sendStatus(200);
         })
