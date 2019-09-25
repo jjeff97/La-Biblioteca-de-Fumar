@@ -40,7 +40,22 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
             res.sendStatus(500);
         });
 });
-router.put('/cigar/:id', (req, res) => {
+
+router.get('/cigar/single/:id', (req, res) => {
+    const queryText = `SELECT * FROM "cigars"
+    WHERE "cigars".id = $1;`
+    const cigarId = req.params.id;
+
+    pool.query(queryText, [cigarId])
+        .then((response) => {
+            res.send(response.rows);
+        })
+        .catch((err) => {
+            console.log('Error with GET (single): ', err);
+            res.sendStatus(500);
+        });
+});
+router.put('/cigar/single/:id', (req, res) => {
     const newCigarData = req.body;
     const cigarId = req.params.id;
     const queryText = `UPDATE "cigars" SET "brand" = $1, "country" = $2, "strength" = $3,
@@ -50,7 +65,7 @@ router.put('/cigar/:id', (req, res) => {
 
     pool.query(queryText, [newCigarData.brand, newCigarData.country, newCigarData.strength,
         newCigarData.cigar_name, newCigarData.size_type, newCigarData.ring_gauge,
-        newCigarData.filler, newCigarData.binder, newCigarData.wrapper])
+        newCigarData.filler, newCigarData.binder, newCigarData.wrapper, cigarId])
         .then((response) => {
             res.sendStatus(200);
         })

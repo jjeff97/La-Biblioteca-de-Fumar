@@ -18,7 +18,7 @@ function* getAllCigarInfo(action) {
 //get one cigar
 function* getCigarInfo(action){
     try{
-        const response = yield axios.get(`api/cigar/single/${action.payload.id}`);
+        const response = yield axios.get('api/cigar/single', action.payload.id);
         yield put({
             type: 'SET_ONE_CIGAR_INFO',
             payload:{
@@ -31,11 +31,22 @@ function* getCigarInfo(action){
     
 }
 
-function* cigarSaga(action) {
+function* cigarUpdateSaga(action) {
+    try {
+        yield axios.put(`api/cigar/single/${action.payload.id}`, action.payload);
+        yield put({ type: 'SET_CIGAR_INFO' });
+    } catch(err) {
+        console.log('PUT movie error: ', err);
+    }
+
+}
+
+
+function* cigarSaga() {
     yield takeLatest('GET_CIGAR_INFO', getAllCigarInfo);
     yield takeLatest('PUT_CIGAR_INFO', newCigarInfoSaga);
-    yield takeLatest('GET_ONE_CIGAR_INFO', getCigarInfo);
-
+    yield takeLatest('POST_ONE_CIGAR_INFO', getCigarInfo);
+    yield takeLatest('GET_CIGAR_INFO', cigarUpdateSaga);
 }
 
 function* newCigarInfoSaga(action) {
