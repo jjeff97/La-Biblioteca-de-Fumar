@@ -19,6 +19,9 @@ clickInventory = (event) => {
 onNewInput =(event) =>{
   this.props.history.push('/input')
 } 
+clickToProfile = (event) => {
+  this.props.history.push(`/profile/${this.props.item.id}`);
+}
  render() {
     const cigarArray = this.props.store.cigarReducer.map((cigar, index) => {
       return (
@@ -42,6 +45,7 @@ onNewInput =(event) =>{
           <button onClick={() => {this.setState({count: this.state.count +1})}}>Increase</button>
           <button onClick ={() => {this.setState({count: this.state.count -1})}}>Decrease</button>
           <button onClick={() => {this.setState({count: 0})}}>Reset</button>
+          <button onClick={this.clickToProfile}>View</button>
           </div>
               )
     })
