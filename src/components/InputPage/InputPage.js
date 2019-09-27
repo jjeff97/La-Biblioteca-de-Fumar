@@ -27,7 +27,8 @@ class InputPage extends Component {
            ring_gauge: this.state.ring_gauge,
            filler: this.state.filler,
            binder: this.state.binder,
-           wrapper: this.state.wrapper
+           wrapper: this.state.wrapper,
+           humidor_count: this.state.humidor_count
        }
         this.props.dispatch({type: 'PUT_CIGAR_INFO', payload: newCigar});
         this.props.history.push('/info')
