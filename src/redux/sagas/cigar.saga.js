@@ -47,12 +47,14 @@ function* cigarSaga() {
     yield takeLatest('PUT_CIGAR_INFO', newCigarInfoSaga);
     yield takeLatest('POST_ONE_CIGAR_INFO', getCigarInfo);
     yield takeLatest('GET_CIGAR_INFO', cigarUpdateSaga);
+    yield takeLatest('GET_CIGAR_ONE_INFO', newCigarInfoSaga);
 }
 
 function* newCigarInfoSaga(action) {
     try {
         yield axios.post('/api/cigar', action.payload);
         yield put({ type: 'GET_CIGAR_INFO' });
+        yield put ({ type:'GET_ONE_CIGAR_INFO' });
     } catch(err) {
         console.log('PUT cigar error: ', err);
     }

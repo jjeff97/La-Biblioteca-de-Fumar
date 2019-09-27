@@ -10,12 +10,7 @@ class ProfilePage extends Component {
     state = {
         humidor_count: 0,
     }
-//    addCigarCount = () => {
-//        const newCount = {
-//            inventoryCount: this.state.count,
-//        }
-//        this.props.dispatch({ type:})
-  // }
+
     componentDidMount() {
         console.log(this.props.store.singleReducer)
     }
@@ -27,9 +22,9 @@ class ProfilePage extends Component {
 
     addCount = () => {
         const cigarCount ={
-        count: this.state.humidor_count
+        humidor_count: this.state.humidor_count
     }
-    this.props.dispatch({type: 'PUT_CIGAR_INFO', payload: cigarCount});
+    this.props.dispatch({type: 'PUT_ONE_CIGAR_INFO', payload: cigarCount});
     }
 
         render() {
@@ -48,9 +43,9 @@ class ProfilePage extends Component {
                     <p>WRAPPER: {cigar.wrapper}</p>
 
                     Amount in humidor: {this.state.humidor_count}
-                <button onClick={() => { this.updateCount({ humidor_count: this.state.humidor_count + 1 }) }}>Increase</button>
-                <button onClick={() => { this.updateCount({ humidor_count: this.state.humidor_count - 1 }) }}>Decrease</button>
-                <button onClick={() => { this.updateCount({ humidor_count: 0 }) }}>Reset</button>
+                <button onClick={() => { this.setState({ humidor_count: this.state.humidor_count + 1 }) }}>Increase</button>
+                <button onClick={() => { this.setState({ humidor_count: this.state.humidor_count - 1 }) }}>Decrease</button>
+                <button onClick={() => { this.setState({ humidor_count: 0 }) }}>Reset</button>
                 <button onClick={this.addCount}>Add to Humidor</button>
                 </div>
                 

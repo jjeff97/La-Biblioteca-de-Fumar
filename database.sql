@@ -29,7 +29,9 @@ CREATE TABLE "cigars" (
   
   "binder"    	VARCHAR(50) NOT NULL,
 	
-  "wrapper"		VARCHAR(50) NOT NULL
+  "wrapper"		VARCHAR(50) NOT NULL,
+  
+  "humidor_count" INT
 
 
 );
