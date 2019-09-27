@@ -47,7 +47,7 @@ function* cigarSaga() {
     yield takeLatest('PUT_CIGAR_INFO', newCigarInfoSaga);
     yield takeLatest('POST_ONE_CIGAR_INFO', getCigarInfo);
     yield takeLatest('GET_CIGAR_INFO', cigarUpdateSaga);
-    yield takeLatest('GET_CIGAR_ONE_INFO', newCigarInfoSaga);
+    yield takeLatest('PUT_CIGAR_ONE_INFO', newCigarInfoSaga);
 }
 
 function* newCigarInfoSaga(action) {

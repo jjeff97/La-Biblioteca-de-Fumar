@@ -16,7 +16,7 @@ class InfoPage extends Component {
         this.props.history.push('/input')
     }
     render() {
-        console.log('movies: ', this.props.store.cigars);
+        console.log('cigars: ', this.props.store.cigars);
         return (
             <div>
                 <h2>Cigar Library</h2>
