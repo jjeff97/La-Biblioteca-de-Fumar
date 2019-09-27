@@ -6,7 +6,7 @@ import './LandingPage.css';
 
 class LandingPage extends Component {
     state = {
-        heading: 'Class Component',
+        heading: 'La Biblioteca Fumar',
     };
 
     onLogin = (event) => {

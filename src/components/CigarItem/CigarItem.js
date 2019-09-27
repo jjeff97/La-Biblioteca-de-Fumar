@@ -8,48 +8,37 @@ class CigarItem extends Component {
 
 
 
-    state = {
-        count: 0,
-    }
+    
     clickInventory = (event) => {
         this.setState({
             count: !this.state.hide,
         });
     }
     clickToProfile = (event) => {
+        this.props.dispatch({type:'SET_ONE_CIGAR_INFO', payload: this.props.item});
         this.props.history.push(`/profile/?${this.props.item.id}`)
     }
-    onNewInput = (event) => {
-        this.props.history.push('/input')
-    }
+    
 
 
     render() {
         return (
             <div>
-                <button onClick={this.clickToProfile}>View</button>
+                <h4>BRAND: {this.props.item.brand}</h4>
+                <p> COUNTRY: {this.props.item.country}</p>
+                <p> STRENGTH: {this.props.item.strength}</p>
+                <p> CIGAR NAME: {this.props.item.cigar_name}</p>
+                <p> SIZE/TYPE: {this.props.item.size_type}</p>
+                <p> RING GAUGE: {this.props.item.ring_gauge}</p>
+                <p> FILLER: {this.props.item.filler}</p>
+                <p> BINDER: {this.props.item.binder}</p>
+                <p> WRAPPER: {this.props.item.wrapper}</p> 
+                <p> COUNT: {this.props.item.humidor_count}</p> 
 
-                <h4>{this.props.item.brand}</h4>
-                <p>{this.props.item.country}</p>
-                <p>{this.props.item.strength}</p>
-                <p>{this.props.item.cigar_name}</p>
-                <p>{this.props.item.size_type}</p>
-                <p>{this.props.item.ring_gauge}</p>
-                <p>{this.props.item.filler}</p>
-                <p>{this.props.item.binder}</p>
-                <p>{this.props.item.wrapper}</p>
+                <button onClick={this.clickToProfile}>View</button>             
+ </div>
+ 
 
-                Amount in humidor: {this.state.count}
-                <button onClick={() => { this.setState({ count: this.state.count + 1 }) }}>Increase</button>
-                <button onClick={() => { this.setState({ count: this.state.count - 1 }) }}>Decrease</button>
-                <button onClick={() => { this.setState({ count: 0 }) }}>Reset</button>
-                <button onClick={this.clickToProfile}>View</button>
-
-                
-                
-                <h2>Click to enter new cigars</h2>
-                <button onClick={this.onNewInput}>Next</button>
-            </div>
         )
     }
 }

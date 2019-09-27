@@ -12,13 +12,19 @@ class InfoPage extends Component {
      this.props.dispatch({ type: 'GET_CIGAR_INFO' });
       }
 
+      onNewInput = (event) => {
+        this.props.history.push('/input')
+    }
 render() {
     console.log('movies: ', this.props.store.cigars);
     return (
         <div>
-            Cigar Library
+            <h2>Cigar Library</h2>
             <CigarList cigars={this.props.store.cigars} />
+            <h2>Click to enter new cigars</h2>
+        <button onClick={this.onNewInput}>Next</button>
         </div>
+        
     );
 }
 }
