@@ -23,7 +23,7 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Routes */
+/* Routes for my app */
 app.use('/api/user', userRouter);
 app.use('/api/cigar', cigarRouter);
 
